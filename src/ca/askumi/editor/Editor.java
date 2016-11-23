@@ -443,8 +443,8 @@ public class Editor extends Application{
 		selectLayer(map.getLayerCount()-1);
 	}
 	//Update the canvas to show the current map
+	//TODO fix middle click and make all these errors go away
 	private static void updateMap(){
-		try{
 		g.setFill(Color.BLACK);
 		g.fillRect(0, 0, map.getWidth(),map.getHeight());
 		for(int row = 0; row < map.getY(); row++){
@@ -470,10 +470,6 @@ public class Editor extends Application{
 			for(int y = 0; y <= map.getY(); y++){
 				g.strokeLine(0,y*Tile.TILESIZE, map.getWidth(), y*Tile.TILESIZE);
 			}
-		}
-		}catch(Exception e){
-			//TODO find out why this error is occurring
-			//i dont want it displayed atm
 		}
 	}
 	
