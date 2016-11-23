@@ -159,90 +159,6 @@
 	offx: 1
 	offy: 3
 }
-23:{
-	name: caveCliff.png-0
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 0
-	offy: 0
-}
-24:{
-	name: caveCliff.png-1
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 0
-	offy: 1
-}
-25:{
-	name: caveCliff.png-2
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 0
-	offy: 2
-}
-26:{
-	name: caveCliff.png-3
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 0
-	offy: 3
-}
-27:{
-	name: caveCliff.png-4
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 1
-	offy: 0
-}
-28:{
-	name: caveCliff.png-5
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 1
-	offy: 1
-}
-29:{
-	name: caveCliff.png-6
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 1
-	offy: 2
-}
-30:{
-	name: caveCliff.png-7
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 1
-	offy: 3
-}
-31:{
-	name: caveCliff.png-8
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 2
-	offy: 0
-}
-32:{
-	name: caveCliff.png-9
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 2
-	offy: 1
-}
-33:{
-	name: caveCliff.png-10
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 2
-	offy: 2
-}
-34:{
-	name: caveCliff.png-11
-	desc: wall, cave, cliff, rock, brown
-	file: tiles/caveCliff.png
-	offx: 2
-	offy: 3
-}
 35:{
 	name: stoneHouse.png-0
 	desc: house, stone, roof, chimney
@@ -508,4 +424,88 @@
 	file: tiles/tree.png
 	offx: 1
 	offy: 2
+}
+83:{
+	name: caveCliff.png-0
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 0
+}
+84:{
+	name: caveCliff.png-1
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 1
+}
+85:{
+	name: caveCliff.png-2
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 2
+}
+86:{
+	name: caveCliff.png-3
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 3
+}
+87:{
+	name: caveCliff.png-4
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 0
+}
+88:{
+	name: caveCliff.png-5
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 1
+}
+89:{
+	name: caveCliff.png-6
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 2
+}
+90:{
+	name: caveCliff.png-7
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 3
+}
+91:{
+	name: caveCliff.png-8
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 0
+}
+92:{
+	name: caveCliff.png-9
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 1
+}
+93:{
+	name: caveCliff.png-10
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 2
+}
+94:{
+	name: caveCliff.png-11
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 3
 }

@@ -32,7 +32,7 @@ public class Editor extends Application{
 	//Main Window
 	//Main Window - Map Canvas
 	private static Canvas canvas;
-	private static GraphicsContext g;
+	private static GraphicsContext graphics;
 	//Main Window - Side Bar
 	private static VBox sidebar = new VBox();
 	private static Menu sidemenu = new Menu("None Selected");
@@ -42,7 +42,6 @@ public class Editor extends Application{
 	//TODO FIX SCROLLING THE CANVAS
 	//TODO the sidebar is updating WAY TOO MUCH
 	private static TextField filter = new TextField();
-	//TODO clear filter when changing selection modes
 	//Selected ID Trackers
 	private static final int MODE_NONE = 0;
 	private static final int MODE_TILE = 1;
@@ -64,7 +63,11 @@ public class Editor extends Application{
 	public static void main(String[] args){
 		try {
 			Tile.setup();
-			palette = new Palette(5,5);
+			//palette = new Palette(5,5);
+                        //try to load the default palette first. then create a blank one if error occurred
+                        palette = Palette.load();
+                        if(palette == null)
+                            palette = new Palette(9,5);
 			Traverse.setup();
 			launch(args);
 		}catch (Exception e){
@@ -147,11 +150,11 @@ public class Editor extends Application{
 		//Tile Selector
 		MenuItem sidemenuTiles = new MenuItem("Tile Selector");
 		sidemenuTiles.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.ALT_DOWN));
-		sidemenuTiles.setOnAction(action -> sideMenu_SelectTiles());
+		sidemenuTiles.setOnAction(action -> {filter.setText("");sideMenu_SelectTiles();});
 		//Traverse Selector
 		MenuItem sidemenuTraverse = new MenuItem("Traversability");
 		sidemenuTraverse.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.ALT_DOWN));
-		sidemenuTraverse.setOnAction(action -> sideMenu_SelectTraverse());
+		sidemenuTraverse.setOnAction(action -> {filter.setText("");sideMenu_SelectTraverse();});
 		//Add menus together
 		sidemenu.getItems().addAll(sidemenuTiles, sidemenuTraverse);
 		menubar.getMenus().addAll(sidemenu, layermenu);
@@ -184,6 +187,7 @@ public class Editor extends Application{
 	//Sidemenu
 	//Selection Functions
 	private static void sideMenu_SelectTiles() {
+                
 		sidebar.getChildren().clear();
 		selectedID = selectedTileID;
 		sidemenu.setText("Tile Selector");
@@ -219,7 +223,7 @@ public class Editor extends Application{
 				selectedID = t.getID();
 				selectedTileID = t.getID();
 				sideMenu_SelectTiles();
-				palette.setTileID(t.getID());
+				palette.setSelectedTileID(t.getID());
 			});
 			sidebar.getChildren().add(row);
 			selectedMode = MODE_TILE;
@@ -346,7 +350,8 @@ public class Editor extends Application{
 		}
 	}
 	private static void saveMap(){
-		map.save();
+            map.save();
+            palette.save();
 	    mapChanged = false;
 	    if(mainWindow.getTitle().endsWith("*"))
 	    	mainWindow.setTitle(mainWindow.getTitle().substring(0, mainWindow.getTitle().length() - 1));
@@ -379,7 +384,7 @@ public class Editor extends Application{
 		canvas.setOnMouseDragged(e -> clickevent(e.getX(), e.getY(), e.getButton(), true));
 		canvas.setOnMouseReleased(e -> releaseevent(e.getButton()));
 		canvas.setOnMouseDragReleased(e -> releaseevent(e.getButton()));
-		g = canvas.getGraphicsContext2D();
+		graphics = canvas.getGraphicsContext2D();
 		mainlayout.setCenter(canvas);
 		updateMap();
 		updateLayerMenu();
@@ -443,32 +448,33 @@ public class Editor extends Application{
 		selectLayer(map.getLayerCount()-1);
 	}
 	//Update the canvas to show the current map
-	//TODO make all these errors go away
 	private static void updateMap(){
-		g.setFill(Color.BLACK);
-		g.fillRect(0, 0, map.getWidth(),map.getHeight());
+                if(map == null)
+                    return;
+		graphics.setFill(Color.BLACK);
+		graphics.fillRect(0, 0, map.getWidth(),map.getHeight());
 		for(int row = 0; row < map.getY(); row++){
 			for(int col = 0; col < map.getX(); col++){
 				for(int i = 0;  i < map.getLayerCount(); i++){
 					if(map.getID(i,row,col) != 0) //Do not draw ID 0
-						g.drawImage(Tile.getByID(map.getID(i,row,col)).getImage(), col*Tile.TILESIZE, row*Tile.TILESIZE);
+						graphics.drawImage(Tile.getByID(map.getID(i,row,col)).getImage(), col*Tile.TILESIZE, row*Tile.TILESIZE);
 				}
 				//if traverse mode isenabled
 				if(selectedMode == MODE_TRAVERSE){
 					Color c = Traverse.getTraverse(map.getTraverse(row,col)).getColor();
-					g.setFill(new Color(c.getRed(), c.getGreen(), c.getBlue(), 0.4));
-					g.fillRect(col*Tile.TILESIZE, row*Tile.TILESIZE,Tile.TILESIZE,Tile.TILESIZE);
+					graphics.setFill(new Color(c.getRed(), c.getGreen(), c.getBlue(), 0.4));
+					graphics.fillRect(col*Tile.TILESIZE, row*Tile.TILESIZE,Tile.TILESIZE,Tile.TILESIZE);
 				}
 			}
 		}
 		//If grid is enabled
 		if(bGrid){
-			g.setStroke(Color.RED);
+			graphics.setStroke(Color.RED);
 			for(int x = 0; x <= map.getX(); x++){
-				g.strokeLine(x*Tile.TILESIZE, 0, x*Tile.TILESIZE, map.getHeight());
+				graphics.strokeLine(x*Tile.TILESIZE, 0, x*Tile.TILESIZE, map.getHeight());
 			}
 			for(int y = 0; y <= map.getY(); y++){
-				g.strokeLine(0,y*Tile.TILESIZE, map.getWidth(), y*Tile.TILESIZE);
+				graphics.strokeLine(0,y*Tile.TILESIZE, map.getWidth(), y*Tile.TILESIZE);
 			}
 		}
 	}
@@ -570,6 +576,7 @@ public class Editor extends Application{
 	}
 	//Called to close the program
 	private static void close(){
+                palette.save();
 		if(mapChanged)
 			if(!askSave())
 				return;
