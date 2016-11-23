@@ -1,14 +1,14 @@
 0:{
 	name: Green
 	desc: Green, Fullcolor
-	file: /tiles/green.png
+	file: tiles/grass.png
 	offx: 0
 	offy: 0
 }
 2:{
 	name: Red
 	desc: Red, Fullcolor
-	file: /tiles/red.png
+	file: tiles/red.png
 	offx: 0
 	offy: 0
 }

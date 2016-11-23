@@ -186,7 +186,7 @@ public class Editor extends Application{
 
 	//Sidemenu
 	//Selection Functions
-	private static void sideMenu_SelectTiles() {
+	protected static void sideMenu_SelectTiles() {
                 
 		sidebar.getChildren().clear();
 		selectedID = selectedTileID;
@@ -208,7 +208,7 @@ public class Editor extends Application{
 				t = tilesFollowingFilter.get((int) (rows+scrollbar.getValue()-1));
 			}catch(IndexOutOfBoundsException e){
 				//No tiles remaining
-				return; //break the loop and still draw the canvas if at the end of the array
+				return;
 			}
 			HBox row = null;
 			row = new HBox();
@@ -228,7 +228,7 @@ public class Editor extends Application{
 			sidebar.getChildren().add(row);
 			selectedMode = MODE_TILE;
 		}
-		updateMap();
+		//updateMap();
 	}
 	//Filtering
 	private static void updateFilter() {
@@ -492,7 +492,7 @@ public class Editor extends Application{
 					else
 						map.setTile(currentLayer, gridY, gridX, 0);
 				else if(button == MouseButton.MIDDLE & !dragged){
-					masspressed = true; //this is getting called by pressing mouse1
+					masspressed = true;
 				}
 				else if(button == MouseButton.PRIMARY){
 					if(masspressed)
@@ -571,6 +571,9 @@ public class Editor extends Application{
 		updateMap();
 	}
 	
+	public static Stage getTileEditor(){
+		return tileEditorWindow;
+	}
 	//Called to close the program
 	private static void close(){
                 palette.save();
