@@ -83,9 +83,14 @@ public class Map {
 	public int getID(int layer, int row, int col){
 		return layers.get(layer)[row][col];
 	}
-	
+        
+        //Confirmation
+        protected boolean isOutOfBounds(int row, int col){
+            return row < 0 || col < 0 || row >= rows || col >= cols;
+        }
 	//Editing the map
 	public void setTile(int layer, int row, int col, int newTileID){
+            if(!isOutOfBounds(row,col))
 		layers.get(layer)[row][col] = newTileID;
 	}
 	//Calls setTile() on a group of tiles all with the same ID
@@ -94,7 +99,7 @@ public class Map {
 		//TODO add a toggleable setting to include diagnols, not only adjacent tiles
 		int thisloc = row*10000+col;
 		//stop if already checked this square or square is not in group
-		if(row < 0 || col < 0 || row >= rows || col >= cols || checkTileList.contains(thisloc) || layers.get(layer)[row][col] != startingID)
+		if(isOutOfBounds(row,col) || checkTileList.contains(thisloc) || layers.get(layer)[row][col] != startingID)
 			return;
 		setTile(layer, row, col, newTileID);
 		checkTileList.add(thisloc);

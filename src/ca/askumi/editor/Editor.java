@@ -443,7 +443,6 @@ public class Editor extends Application{
 		selectLayer(map.getLayerCount()-1);
 	}
 	//Update the canvas to show the current map
-	//TODO fix middle click
 	private static void updateMap(){
                 if(map == null)
                     return;
