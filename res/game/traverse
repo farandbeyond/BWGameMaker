@@ -1,0 +1,10 @@
+0:{
+	name: Walkable
+	desc: Sprites can walk here.
+	uneditable
+}
+1:{
+	name: Blocked
+	desc: Sptires can not walk here.
+	uneditable
+}

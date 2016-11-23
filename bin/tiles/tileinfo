@@ -1,0 +1,357 @@
+0:{
+	name: Green
+	desc: Green, Fullcolor
+	file: /tiles/green.png
+	offx: 0
+	offy: 0
+}
+2:{
+	name: Red
+	desc: Red, Fullcolor
+	file: /tiles/red.png
+	offx: 0
+	offy: 0
+}
+3:{
+	name: Basic Water
+	desc: Blue, Water
+	file: tiles/basicwater.png
+	offx: 0
+	offy: 0
+}
+4:{
+	name: Floor
+	desc: Floor
+	file: tiles/floor.png
+	offx: 0
+	offy: 0
+}
+5:{
+	name: FlowerGrass
+	desc: Floor, Grass, Flower, Decoration
+	file: tiles/flowergrass.png
+	offx: 0
+	offy: 0
+}
+6:{
+	name: Grass
+	desc: Grass, Floor
+	file: tiles/grass.png
+	offx: 0
+	offy: 0
+}
+7:{
+	name: House Floor
+	desc: Wood, House, Floor
+	file: tiles/housefloor.png
+	offx: 0
+	offy: 0
+}
+9:{
+	name: ReactorDemo
+	desc: Decoration
+	file: tiles/ReactorDemo.png
+	offx: 0
+	offy: 0
+}
+12:{
+	name: void
+	desc: Nothing
+	file: tiles/void.png
+	offx: 0
+	offy: 0
+}
+13:{
+	name: Wall
+	desc: Wall, House, White
+	file: tiles/wall.png
+	offx: 0
+	offy: 0
+}
+14:{
+	name: Water
+	desc: Water, Blue
+	file: tiles/water.png
+	offx: 0
+	offy: 0
+}
+15:{
+	name: Wooden Wall
+	desc: Wall, Wood, House
+	file: tiles/woodwall.png
+	offx: 0
+	offy: 0
+}
+16:{
+	name: Lotus
+	desc: Decoration, Water
+	file: tiles/lotos.png
+	offx: 0
+	offy: 0
+}
+17:{
+	name: Flower
+	desc: Orange Flower, Decoration
+	file: /tiles/flower.png
+	offx: 0
+	offy: 0
+}
+59:{
+	name: Grass Dirt
+	desc: cave grass dirt
+	file: tiles/grassdirt.png
+	offx: 0
+	offy: 0
+}
+45:{
+	name: woodBridge.png-0
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 0
+	offy: 0
+}
+46:{
+	name: woodBridge.png-1
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 0
+	offy: 1
+}
+47:{
+	name: woodBridge.png-2
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 0
+	offy: 2
+}
+48:{
+	name: woodBridge.png-3
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 0
+	offy: 3
+}
+49:{
+	name: woodBridge.png-4
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 1
+	offy: 0
+}
+50:{
+	name: woodBridge.png-5
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 1
+	offy: 1
+}
+51:{
+	name: woodBridge.png-6
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 1
+	offy: 2
+}
+52:{
+	name: woodBridge.png-7
+	desc: wood, bridge, floor, decoration, transparent
+	file: tiles/woodBridge.png
+	offx: 1
+	offy: 3
+}
+23:{
+	name: caveCliff.png-0
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 0
+}
+24:{
+	name: caveCliff.png-1
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 1
+}
+25:{
+	name: caveCliff.png-2
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 2
+}
+26:{
+	name: caveCliff.png-3
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 0
+	offy: 3
+}
+27:{
+	name: caveCliff.png-4
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 0
+}
+28:{
+	name: caveCliff.png-5
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 1
+}
+29:{
+	name: caveCliff.png-6
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 2
+}
+30:{
+	name: caveCliff.png-7
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 1
+	offy: 3
+}
+31:{
+	name: caveCliff.png-8
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 0
+}
+32:{
+	name: caveCliff.png-9
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 1
+}
+33:{
+	name: caveCliff.png-10
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 2
+}
+34:{
+	name: caveCliff.png-11
+	desc: wall, cave, cliff, rock, brown
+	file: tiles/caveCliff.png
+	offx: 2
+	offy: 3
+}
+35:{
+	name: stoneHouse.png-0
+	desc: house, stone, roof, chimney
+	file: tiles/stoneHouse.png
+	offx: 0
+	offy: 0
+}
+36:{
+	name: stoneHouse.png-1
+	desc: house, stone, wall
+	file: tiles/stoneHouse.png
+	offx: 0
+	offy: 1
+}
+37:{
+	name: stoneHouse.png-2
+	desc: house, stone, roof, chimney
+	file: tiles/stoneHouse.png
+	offx: 1
+	offy: 0
+}
+38:{
+	name: stoneHouse.png-3
+	desc: house, stone, wall, door
+	file: tiles/stoneHouse.png
+	offx: 1
+	offy: 1
+}
+39:{
+	name: stoneHouse.png-4
+	desc: house, stone, roof
+	file: tiles/stoneHouse.png
+	offx: 2
+	offy: 0
+}
+53:{
+	name: stoneHouse.png-5
+	desc: house, stone, wall, window
+	file: tiles/stoneHouse.png
+	offx: 2
+	offy: 1
+}
+41:{
+	name: path.png-0
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 0
+	offy: 0
+}
+42:{
+	name: path.png-1
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 0
+	offy: 1
+}
+43:{
+	name: path.png-2
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 0
+	offy: 2
+}
+44:{
+	name: path.png-3
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 1
+	offy: 0
+}
+54:{
+	name: path.png-4
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 1
+	offy: 1
+}
+55:{
+	name: path.png-5
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 1
+	offy: 2
+}
+56:{
+	name: path.png-6
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 2
+	offy: 0
+}
+57:{
+	name: path.png-7
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 2
+	offy: 1
+}
+58:{
+	name: path.png-8
+	desc: floor, path, yellow, walk, decoration, transparent
+	file: tiles/path.png
+	offx: 2
+	offy: 2
+}
+60:{
+	name: tree
+	desc: tree, transparent, decoration
+	file: tiles/smalltree.png
+	offx: 0
+	offy: 0
+}
