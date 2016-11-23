@@ -40,7 +40,10 @@ public class Palette{
 		GraphicsContext gc =  canvas.getGraphicsContext2D();
 		//the reason root is saved at instance level. i grab the canvas in drawTiles(button,double,double) from root directly, as a kind of repaint()
 		updateTiles(gc);
-		canvas.setOnMouseClicked(e -> alterTileAt(e.getButton(), e.getX(), e.getY()));
+		canvas.setOnMouseClicked(e -> {
+                    alterTileAt(e.getButton(), e.getX(), e.getY());
+                    Editor.sideMenu_SelectTiles();
+                });
 	}
 	
 	//Setting and getting tileID from grid on mouse click
@@ -71,7 +74,12 @@ public class Palette{
                                 if(tiles[row][col]!=0){
                                     g.drawImage(Tile.getByID(tiles[row][col]).getImage(), (double)col*Tile.TILESIZE, (double)row*Tile.TILESIZE);
                                 }
-			}
+                                if(tiles[row][col] == tileID){
+                                    g.setStroke(Color.RED);
+                                    g.strokeRect(Tile.TILESIZE*col, Tile.TILESIZE*row, Tile.TILESIZE-1, Tile.TILESIZE-1);
+                                    g.strokeRect(Tile.TILESIZE*col+1, Tile.TILESIZE*row+1, Tile.TILESIZE-2, Tile.TILESIZE-2);
+                                }
+                        }
 		}
 	}
 	private void updateTiles(){
