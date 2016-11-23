@@ -32,7 +32,7 @@ public class Editor extends Application{
 	//Main Window
 	//Main Window - Map Canvas
 	private static Canvas canvas;
-	private static GraphicsContext g;
+	private static GraphicsContext graphics;
 	//Main Window - Side Bar
 	private static VBox sidebar = new VBox();
 	private static Menu sidemenu = new Menu("None Selected");
@@ -379,7 +379,7 @@ public class Editor extends Application{
 		canvas.setOnMouseDragged(e -> clickevent(e.getX(), e.getY(), e.getButton(), true));
 		canvas.setOnMouseReleased(e -> releaseevent(e.getButton()));
 		canvas.setOnMouseDragReleased(e -> releaseevent(e.getButton()));
-		g = canvas.getGraphicsContext2D();
+		graphics = canvas.getGraphicsContext2D();
 		mainlayout.setCenter(canvas);
 		updateMap();
 		updateLayerMenu();
@@ -443,32 +443,34 @@ public class Editor extends Application{
 		selectLayer(map.getLayerCount()-1);
 	}
 	//Update the canvas to show the current map
-	//TODO fix middle click and make all these errors go away
+	//TODO fix middle click
 	private static void updateMap(){
-		g.setFill(Color.BLACK);
-		g.fillRect(0, 0, map.getWidth(),map.getHeight());
+                if(map == null)
+                    return;
+		graphics.setFill(Color.BLACK);
+		graphics.fillRect(0, 0, map.getWidth(),map.getHeight());
 		for(int row = 0; row < map.getY(); row++){
 			for(int col = 0; col < map.getX(); col++){
 				for(int i = 0;  i < map.getLayerCount(); i++){
 					if(map.getID(i,row,col) != 0) //Do not draw ID 0
-						g.drawImage(Tile.getByID(map.getID(i,row,col)).getImage(), col*Tile.TILESIZE, row*Tile.TILESIZE);
+						graphics.drawImage(Tile.getByID(map.getID(i,row,col)).getImage(), col*Tile.TILESIZE, row*Tile.TILESIZE);
 				}
 				//if traverse mode isenabled
 				if(selectedMode == MODE_TRAVERSE){
 					Color c = Traverse.getTraverse(map.getTraverse(row,col)).getColor();
-					g.setFill(new Color(c.getRed(), c.getGreen(), c.getBlue(), 0.4));
-					g.fillRect(col*Tile.TILESIZE, row*Tile.TILESIZE,Tile.TILESIZE,Tile.TILESIZE);
+					graphics.setFill(new Color(c.getRed(), c.getGreen(), c.getBlue(), 0.4));
+					graphics.fillRect(col*Tile.TILESIZE, row*Tile.TILESIZE,Tile.TILESIZE,Tile.TILESIZE);
 				}
 			}
 		}
 		//If grid is enabled
 		if(bGrid){
-			g.setStroke(Color.RED);
+			graphics.setStroke(Color.RED);
 			for(int x = 0; x <= map.getX(); x++){
-				g.strokeLine(x*Tile.TILESIZE, 0, x*Tile.TILESIZE, map.getHeight());
+				graphics.strokeLine(x*Tile.TILESIZE, 0, x*Tile.TILESIZE, map.getHeight());
 			}
 			for(int y = 0; y <= map.getY(); y++){
-				g.strokeLine(0,y*Tile.TILESIZE, map.getWidth(), y*Tile.TILESIZE);
+				graphics.strokeLine(0,y*Tile.TILESIZE, map.getWidth(), y*Tile.TILESIZE);
 			}
 		}
 	}
