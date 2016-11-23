@@ -64,7 +64,11 @@ public class Editor extends Application{
 	public static void main(String[] args){
 		try {
 			Tile.setup();
-			palette = new Palette(5,5);
+			//palette = new Palette(5,5);
+                        //try to load the default palette first. then create a blank one if error occurred
+                        palette = Palette.load();
+                        if(palette == null)
+                            palette = new Palette(5,5);
 			Traverse.setup();
 			launch(args);
 		}catch (Exception e){
@@ -219,7 +223,7 @@ public class Editor extends Application{
 				selectedID = t.getID();
 				selectedTileID = t.getID();
 				sideMenu_SelectTiles();
-				palette.setTileID(t.getID());
+				palette.setSelectedTileID(t.getID());
 			});
 			sidebar.getChildren().add(row);
 			selectedMode = MODE_TILE;
@@ -346,7 +350,8 @@ public class Editor extends Application{
 		}
 	}
 	private static void saveMap(){
-		map.save();
+            map.save();
+            palette.save();
 	    mapChanged = false;
 	    if(mainWindow.getTitle().endsWith("*"))
 	    	mainWindow.setTitle(mainWindow.getTitle().substring(0, mainWindow.getTitle().length() - 1));
@@ -568,6 +573,7 @@ public class Editor extends Application{
 	
 	//Called to close the program
 	private static void close(){
+                palette.save();
 		if(mapChanged)
 			if(!askSave())
 				return;
