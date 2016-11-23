@@ -3,6 +3,7 @@
 //Created:		2016-11-22
 //Last Edited:	2016-11-23
 package ca.askumi.editor;
+import javafx.scene.paint.Color;
 import javafx.scene.canvas.*;
 import javafx.scene.input.*;
 
@@ -10,15 +11,21 @@ public class Palette{
 	//tiles: tile list. can be replaced with int[][] and whatever draw method you've got
 	//root: just saved into instance level stuff, for outer reference
 	//tileID: replaced with your paintedTileID, or whatever you call it (the one linked to LMB-press on map)
+	private final int sizex;
+	private final int sizey;
+	private final Color transparentColor = Color.GREEN;
 	private int[][] tiles;
 	private Canvas canvas;
 	private int tileID;
 	//TODO save and load canvas to project
 	//TODO disable canvas when not in tile select mode
 	//TODO save palette selections
+	//TODO option to add entire tile chunks to palette (for multi-tile tiles)
 	
 	public Palette(int x, int y){
 		//init
+		sizex = x;
+		sizey = y;
 		tiles = new int[y][x]; //auto-sets all to 0
 		tileID = 0;
 		//canvas to draw
@@ -46,14 +53,15 @@ public class Palette{
 	}
 	
 	private void updateTiles(GraphicsContext g){
-		//TODO fix tiles drawing over older tiles
+		g.clearRect(0, 0, sizex * Tile.TILESIZE, sizey * Tile.TILESIZE);
+		g.setFill(transparentColor);
+		g.fillRect(0, 0, sizex * Tile.TILESIZE, sizey * Tile.TILESIZE);
 		//draws all tiles to the canvas. basically paintComponent(Graphics)
 		for(int row = 0; row < tiles.length; row++){
 			for(int col = 0; col < tiles[row].length; col++){
 				g.drawImage(Tile.getByID(tiles[row][col]).getImage(), (double)col*Tile.TILESIZE, (double)row*Tile.TILESIZE);
 			}
 		}
-		//TODO draw transparency background
 	}
 	
 	private void updateTiles(){
