@@ -59,7 +59,6 @@ public class Editor extends Application{
 	//Current Loaded Map
 	private static Map map;
 	private static int currentLayer; //Current layer we are editing
-	//TODO AUTOCHANGELAYER ON CREATION
 
 	//Main
 	public static void main(String[] args){
@@ -441,6 +440,7 @@ public class Editor extends Application{
 			map.addLayer(name);
 			updateLayerMenu();
 		});
+		selectLayer(map.getLayerCount()-1);
 	}
 	//Update the canvas to show the current map
 	private static void updateMap(){
