@@ -42,7 +42,6 @@ public class Editor extends Application{
 	//TODO FIX SCROLLING THE CANVAS
 	//TODO the sidebar is updating WAY TOO MUCH
 	private static TextField filter = new TextField();
-	//TODO clear filter when changing selection modes
 	//Selected ID Trackers
 	private static final int MODE_NONE = 0;
 	private static final int MODE_TILE = 1;
@@ -68,7 +67,7 @@ public class Editor extends Application{
                         //try to load the default palette first. then create a blank one if error occurred
                         palette = Palette.load();
                         if(palette == null)
-                            palette = new Palette(5,5);
+                            palette = new Palette(9,5);
 			Traverse.setup();
 			launch(args);
 		}catch (Exception e){
@@ -151,11 +150,11 @@ public class Editor extends Application{
 		//Tile Selector
 		MenuItem sidemenuTiles = new MenuItem("Tile Selector");
 		sidemenuTiles.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.ALT_DOWN));
-		sidemenuTiles.setOnAction(action -> sideMenu_SelectTiles());
+		sidemenuTiles.setOnAction(action -> {filter.setText("");sideMenu_SelectTiles();});
 		//Traverse Selector
 		MenuItem sidemenuTraverse = new MenuItem("Traversability");
 		sidemenuTraverse.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.ALT_DOWN));
-		sidemenuTraverse.setOnAction(action -> sideMenu_SelectTraverse());
+		sidemenuTraverse.setOnAction(action -> {filter.setText("");sideMenu_SelectTraverse();});
 		//Add menus together
 		sidemenu.getItems().addAll(sidemenuTiles, sidemenuTraverse);
 		menubar.getMenus().addAll(sidemenu, layermenu);
@@ -188,6 +187,7 @@ public class Editor extends Application{
 	//Sidemenu
 	//Selection Functions
 	private static void sideMenu_SelectTiles() {
+                
 		sidebar.getChildren().clear();
 		selectedID = selectedTileID;
 		sidemenu.setText("Tile Selector");

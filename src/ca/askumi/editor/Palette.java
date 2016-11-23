@@ -24,7 +24,6 @@ public class Palette{
 	private int[][] tiles;
 	private Canvas canvas;
 	private int tileID;
-	//TODO save and load canvas to project
 	//TODO disable canvas when not in tile select mode
 	//TODO save palette selections
 	//TODO option to add entire tile chunks to palette (for multi-tile tiles)
@@ -155,7 +154,7 @@ public class Palette{
                             line = line.substring(3);
                             row = Integer.parseInt(line.split(":")[0]);
                             String[] ids = line.split(":")[1].split(",");//line.split(:)[1] returns <id>,<id>, ...
-                            for(int i=0;i<ids.length-1;i++){ //-1 to compensate for the last ,
+                            for(int i=0;i<ids.length;i++){ //-1 to compensate for the last ,
                                 p.setTileAt(row, i, Integer.parseInt(ids[i]));
                             }
                             break;
