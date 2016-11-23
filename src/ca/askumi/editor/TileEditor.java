@@ -35,7 +35,7 @@ public class TileEditor extends Stage{
 	private TableView table;
 	private TextField filter;
 
-	private Tile openTile = null;
+	private static Tile openTile = null;
 	
 	//TODO file chooser
 	//TODO massimport
@@ -117,11 +117,12 @@ public class TileEditor extends Stage{
 		table.setEditable(true);
 		TableColumn<EditTileModel,String> CProperty = new TableColumn<EditTileModel,String>("Property");
 		TableColumn<EditTileModel,String> CValue = new TableColumn<EditTileModel,String>("Value");
+		TableColumn<EditTileModel,Button> CSelect = new TableColumn<EditTileModel,Button>("Options");
 		//Setup data
 		ArrayList<EditTileModel> models = new ArrayList<EditTileModel>();
 		models.add(new EditTileModel("Name", openTile.getName()));
 		models.add(new EditTileModel("Description", openTile.getDescription()));
-		models.add(new EditTileModel("Image File", openTile.getImageFile()));
+		models.add(new EditTileButtonModel("Image File", openTile.getImageFile()));
 		models.add(new EditTileModel("Offset X", ""+openTile.getOffsetX()));
 		models.add(new EditTileModel("Offset Y", ""+openTile.getOffsetY()));
 		//Display Data
@@ -135,14 +136,18 @@ public class TileEditor extends Stage{
 		CValue.setResizable(false);
 		CValue.setEditable(true);
 		CValue.setSortable(false);
-		CValue.setMinWidth(WIDTH-120);
+		CValue.setMinWidth(WIDTH-230);
 		CValue.setCellFactory(TextFieldTableCell.forTableColumn());
 		CValue.setOnEditCommit(e -> {
 			((EditTileModel) e.getTableView().getItems().get(e.getTablePosition().getRow()))
 			.setValue(e.getNewValue());
 		});
+		CSelect.setCellValueFactory(new PropertyValueFactory<EditTileModel, Button>("Button"));
+		CSelect.setResizable(false);
+		CSelect.setEditable(false);
+		CSelect.setSortable(false);
 		//Add table to scene
-		table.getColumns().addAll(CProperty, CValue);
+		table.getColumns().addAll(CProperty, CValue, CSelect);
 		layout.setBottom(idLabel);
 		layout.setCenter(table);
 	}
@@ -323,38 +328,47 @@ public class TileEditor extends Stage{
 	}
 	
 	public static class EditTileModel {
-	    private final SimpleStringProperty property;
-	    private final SimpleStringProperty value;
-	    private final SimpleStringProperty offsetX;
-	    private final SimpleStringProperty offsetY;
+	    protected final SimpleStringProperty property;
+	    protected final SimpleStringProperty value;
+	    protected Button button;
 	 
-	    private EditTileModel(String property, String value) {
+	    private EditTileModel(String property, String value){
 	    	this.property = new SimpleStringProperty(property);
 	    	this.value = new SimpleStringProperty(value);
-	    	this.offsetX = new SimpleStringProperty("0");
-	    	this.offsetY = new SimpleStringProperty("1");
+	    	this.button = null;
 	    }
 	 
-	    public String getProperty() {
+	    public String getProperty(){
 	        return property.get();
 	    }
-	    public String getValue() {
+	    public String getValue(){
 	        return value.get();
-	    }
-	    public String getOffsetX() {
-	        return offsetX.get();
-	    }
-	    public String getOffsetY() {
-	        return offsetY.get();
 	    }
 	    public void setValue(String newValue){
 	    	value.set(newValue);
 	    }
-	    public void setOffsetX(String newValue){
-	    	offsetX.set(newValue);
+	}
+	
+	public static class EditTileButtonModel extends EditTileModel{
+	 
+	    private EditTileButtonModel(String property, String value){
+	    	super(property, value);
+	    	button = new Button("Browse");
+	    	button.setOnAction(action -> openFileChooser());
 	    }
-	    public void setOffsetY(String newValue){
-	    	offsetY.set(newValue);
+	    private void openFileChooser() {
+			FileChooser filechooser = new FileChooser();
+			filechooser.setTitle("Open Image File");
+			filechooser.getExtensionFilters().add(new ExtensionFilter("Png Files", "*.png"));
+			filechooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/res/tiles"));;
+			File selectedFile = filechooser.showOpenDialog(Editor.getTileEditor());
+			if(selectedFile != null){
+				button.setText(selectedFile.getName());
+				value.set("tiles/"+selectedFile.getName());
+			}
+		}
+		public Button getButton(){
+	    	return button;
 	    }
 	}
 }

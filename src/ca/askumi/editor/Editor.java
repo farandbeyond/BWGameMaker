@@ -204,7 +204,7 @@ public class Editor extends Application{
 				t = tilesFollowingFilter.get((int) (rows+scrollbar.getValue()-1));
 			}catch(IndexOutOfBoundsException e){
 				//No tiles remaining
-				return; //break the loop and still draw the canvas if at the end of the array
+				return;
 			}
 			HBox row = null;
 			row = new HBox();
@@ -224,7 +224,7 @@ public class Editor extends Application{
 			sidebar.getChildren().add(row);
 			selectedMode = MODE_TILE;
 		}
-		updateMap();
+		//updateMap();
 	}
 	//Filtering
 	private static void updateFilter() {
@@ -443,7 +443,7 @@ public class Editor extends Application{
 		selectLayer(map.getLayerCount()-1);
 	}
 	//Update the canvas to show the current map
-	//TODO fix middle click and make all these errors go away
+	//TODO make all these errors go away
 	private static void updateMap(){
 		g.setFill(Color.BLACK);
 		g.fillRect(0, 0, map.getWidth(),map.getHeight());
@@ -486,7 +486,7 @@ public class Editor extends Application{
 					else
 						map.setTile(currentLayer, gridY, gridX, 0);
 				else if(button == MouseButton.MIDDLE & !dragged){
-					masspressed = true; //this is getting called by pressing mouse1
+					masspressed = true;
 				}
 				else if(button == MouseButton.PRIMARY){
 					if(masspressed)
@@ -565,6 +565,9 @@ public class Editor extends Application{
 		updateMap();
 	}
 	
+	public static Stage getTileEditor(){
+		return tileEditorWindow;
+	}
 	//Called to close the program
 	private static void close(){
 		if(mapChanged)
